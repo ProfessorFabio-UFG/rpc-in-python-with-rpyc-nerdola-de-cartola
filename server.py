@@ -5,6 +5,9 @@ from rpyc.utils.server import ThreadedServer
 class DBList(rpyc.Service):
   value = []
 
+  def __iter__(self):
+    return iter(self.value)
+
   def exposed_append(self, data):
     self.value = self.value + [data]
     return self.value
